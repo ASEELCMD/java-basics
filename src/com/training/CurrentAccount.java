@@ -1,22 +1,36 @@
 package com.training;
 
-public class CurrentAccount  extends Account {
+public class CurrentAccount extends Account {
 
     private double overdraftLimit;
-    public CurrentAccount(int accountNumber, String customerName,
-                          double balance, double overdraftLimit) {
+
+    // Constructor
+    public CurrentAccount(String accountNumber,
+                          String customerName,
+                          double balance,
+                          double overdraftLimit) {
+
         super(accountNumber, customerName, balance);
+
         this.overdraftLimit = overdraftLimit;
     }
-    @Override
-    public void withdraw(double amount) {
-        if (amount <= balance + overdraftLimit) {
-            balance -= amount;
-            System.out.println(amount + " withdrawn successfully.");
-        } else {
-            System.out.println(" Exceeds Overdraft");
-        }
-        
+
+    public double getOverdraftLimit() {
+
+        return overdraftLimit;
     }
- 
+
+    public void setOverdraftLimit(double overdraftLimit) {
+
+        this.overdraftLimit = overdraftLimit;
+    }
+
+    @Override
+    public String toString() {
+
+        return "CurrentAccount [overdraftLimit=" + overdraftLimit
+                + ", accountNumber=" + accountNumber
+                + ", customerName=" + customerName
+                + ", balance=" + balance + "]";
+    }
 }
